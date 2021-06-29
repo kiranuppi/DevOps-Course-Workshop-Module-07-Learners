@@ -48,7 +48,7 @@ pipeline {
         
             steps {
                 echo 'Collecting the coverage stats..'   
-                publishCoverage adapters: [istanbulCobertura(path:'coverage/cobertura-coverage.xml',
+                publishCoverage adapters{ [istanbulCobertura(path:'coverage/cobertura-coverage.xml',
                 enableNewApi: true,
                 autoUpdateHealth: true,
                 autoUpdateStability: true,
@@ -61,6 +61,7 @@ pipeline {
                 lineCoverageTargets: '80, 0, 0',
                 methodCoverageTargets: '80, 0, 0',
                 packageCoverageTargets: '80, 0, 0')]  
+                }
             }
         }
         
