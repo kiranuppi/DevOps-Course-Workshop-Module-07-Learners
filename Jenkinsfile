@@ -16,7 +16,7 @@ pipeline {
                  dir ("./DotnetTemplate.Web"){
                     sh 'npm install'
                     sh 'npm run build'
-                    sh 'npm t'
+                    sh 'npm run test-with-coverage'
                     sh 'npm run lint'
                 }
             }
@@ -43,6 +43,14 @@ pipeline {
             }
         }
         
+        stage('Coverage') {
+        
+            steps {
+                echo 'Collecting the coverage stats..'   
+                publishCoverage adapters: [istanbulCoberturaAdapter('DotnetTemplate.Web/coverage/cobertura-coverage.xml')]  
+
+            }
+        }
         
     }
 }
