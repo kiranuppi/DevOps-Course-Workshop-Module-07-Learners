@@ -20,6 +20,6 @@ jobs:
       run: dotnet test
     
     - name: Build Typescript Code
-      run: npm install 
+      run: npm install
 
 
