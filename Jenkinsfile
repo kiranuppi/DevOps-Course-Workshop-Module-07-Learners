@@ -47,7 +47,7 @@ pipeline {
         
             steps {
                 echo 'Collecting the coverage stats..'   
-                publishCoverage sourceFileResolver: sourceFiles('DotnetTemplate.Web/coverage/cobertura-coverage.xml')  
+                cobertura coberturaReportFile: './DotnetTemplate.Web/coverage/cobertura-coverage.xml'  
 
             }
         }
