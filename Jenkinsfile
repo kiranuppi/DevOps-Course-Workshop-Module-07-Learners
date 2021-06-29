@@ -47,7 +47,7 @@ pipeline {
         
             steps {
                 echo 'Collecting the coverage stats..'   
-                publishCoverage adapters: [coberturaAdapter('./DotnetTemplate.Web/coverage/cobertura-coverage.xml')]  
+                publishCoverage adapters: [istanbulCobertura('./DotnetTemplate.Web/coverage/cobertura-coverage.xml')]  
 
             }
         }
