@@ -17,7 +17,7 @@ pipeline {
                     sh 'npm install'
                     sh 'npm run build'
                     sh 'npm t'
-                    sh 'npm lint'
+                    sh 'npm run lint'
                 }
             }
         }
