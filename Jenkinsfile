@@ -18,40 +18,39 @@ pipeline {
                     sh 'npm run build'
                     sh 'npm run test-with-coverage'
                     sh 'npm run lint'
-                    publishCoverage adapters: [istanbulCobertura(path:'coverage/cobertura-coverage.xml')]  
+                    
                 }
             }
         }
 
-        // stage('Dot Net Build and Test') {
-        //     agent{
-        //         docker{
-        //             image "mcr.microsoft.com/dotnet/sdk:5.0"
-        //         }
+        stage('Dot Net Build and Test') {
+            agent{
+                docker{
+                    image "mcr.microsoft.com/dotnet/sdk:5.0"
+                }
           
-        //     }
-        //     environment {
+            }
+            environment {
                    
-        //         DOTNET_CLI_HOME="/tmp/dotnet_cli_home" 
-        //     }
+                DOTNET_CLI_HOME="/tmp/dotnet_cli_home" 
+            }
     
           
-        //     steps {
-        //         echo 'Building..'     
-        //         sh 'dotnet build'
-        //         sh 'dotnet test'
+            steps {
+                echo 'Building..'     
+                sh 'dotnet build'
+                sh 'dotnet test'
 
-        //     }
-        // }
+            }
+        }
         
-        // stage('Coverage') {
+        stage('Coverage') {
         
-        //     steps {
-        //         echo 'Collecting the coverage stats..'   
-        //         publishCoverage adapters: [istanbulCobertura('./DotnetTemplate.Web/coverage/cobertura-coverage.xml')]  
-
-        //     }
-        // }
+            steps {
+                echo 'Collecting the coverage stats..'   
+                publishCoverage adapters: [istanbulCobertura(path:'coverage/cobertura-coverage.xml')]  
+            }
+        }
         
     }
 }
