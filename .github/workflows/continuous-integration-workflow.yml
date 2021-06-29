@@ -21,9 +21,14 @@ jobs:
     
     - name: Build Typescript Code
       run: npm install
+
+    - name: Run Typescript Code  
+      run: npm run build
+      
     - name: Running Typescript Tests
       run: npm t
       working-directory: DotnetTemplate.Web
+
     - name: Running Lint
       run: npm run lint
       working-directory: DotnetTemplate.Web
