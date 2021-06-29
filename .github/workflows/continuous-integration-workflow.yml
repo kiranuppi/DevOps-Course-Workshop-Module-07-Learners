@@ -7,8 +7,18 @@ jobs:
     runs-on: ubuntu-latest      # Sets the build environment a machine with the latest Ubuntu installed
     steps:
     - uses: actions/checkout@v2
-    - name: Hello world       # Name of step
-      uses: actions/hello-world-javascript-action@v1.1 # Name of the action. This uses https://github.com/actions/hello-world-javascript-action
-      with:                                            # This section is needed if you need to pass arguments to the action
-        who-to-greet: 'Hello Kiran Uppi!'
+    - name: Set up .NET core
+    - uses: actions/setup-dotnet@v1
+      with: 
+        dotnet-version: 5.0.301
+      
+    - name: Build C Sharp Code
+      run: dotnet build
+
+    - name: Run C Sharp Tests
+      run: dotnet test
     
+    - name: Build Typescript Code
+      run: npm install 
+      run: npm run build 
+
