@@ -18,6 +18,7 @@ pipeline {
                     sh 'npm run build'
                     sh 'npm run test-with-coverage'
                     sh 'npm run lint'
+                    publishCoverage adapters: [istanbulCobertura('./coverage/cobertura-coverage.xml')]  
                 }
             }
         }
@@ -43,14 +44,14 @@ pipeline {
         //     }
         // }
         
-        stage('Coverage') {
+        // stage('Coverage') {
         
-            steps {
-                echo 'Collecting the coverage stats..'   
-                publishCoverage adapters: [istanbulCobertura('./DotnetTemplate.Web/coverage/cobertura-coverage.xml')]  
+        //     steps {
+        //         echo 'Collecting the coverage stats..'   
+        //         publishCoverage adapters: [istanbulCobertura('./DotnetTemplate.Web/coverage/cobertura-coverage.xml')]  
 
-            }
-        }
+        //     }
+        // }
         
     }
 }
