@@ -22,32 +22,32 @@ pipeline {
             }
         }
 
-        stage('Dot Net Build and Test') {
-            agent{
-                docker{
-                    image "mcr.microsoft.com/dotnet/sdk:5.0"
-                }
+        // stage('Dot Net Build and Test') {
+        //     agent{
+        //         docker{
+        //             image "mcr.microsoft.com/dotnet/sdk:5.0"
+        //         }
           
-            }
-            environment {
+        //     }
+        //     environment {
                    
-                DOTNET_CLI_HOME="/tmp/dotnet_cli_home" 
-            }
+        //         DOTNET_CLI_HOME="/tmp/dotnet_cli_home" 
+        //     }
     
           
-            steps {
-                echo 'Building..'     
-                sh 'dotnet build'
-                sh 'dotnet test'
+        //     steps {
+        //         echo 'Building..'     
+        //         sh 'dotnet build'
+        //         sh 'dotnet test'
 
-            }
-        }
+        //     }
+        // }
         
         stage('Coverage') {
         
             steps {
                 echo 'Collecting the coverage stats..'   
-                publishCoverage coberturaReportFile: './DotnetTemplate.Web/coverage/cobertura-coverage.xml'    
+                publishCoverage adapters: [coberturaAdapter('./DotnetTemplate.Web/coverage/cobertura-coverage.xml')]  
 
             }
         }
