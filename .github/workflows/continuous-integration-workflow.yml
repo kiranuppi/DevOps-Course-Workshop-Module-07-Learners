@@ -8,10 +8,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up .NET core
-      uses: actions/setup-dotnet@v1
-      with: 
-        dotnet-version: 5.0.301
       
     - name: Build C Sharp Code
       run: dotnet build
