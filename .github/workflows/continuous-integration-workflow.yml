@@ -16,8 +16,9 @@ jobs:
       run: dotnet test
     
     - name: Build Typescript Code
-      run: npm install
-      run: npm run build
+      run: 
+        npm install
+        npm run build
       working-directory: ./DotnetTemplate.Web
       
 
