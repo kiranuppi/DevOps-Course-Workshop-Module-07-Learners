@@ -47,7 +47,7 @@ pipeline {
         
             steps {
                 echo 'Collecting the coverage stats..'   
-                cobertura coberturaReportFile: './DotnetTemplate.Web/coverage/cobertura-coverage.xml'  
+                publishCoverage coberturaReportFile: './DotnetTemplate.Web/coverage/cobertura-coverage.xml'    
 
             }
         }
